@@ -3,7 +3,8 @@ import React from 'react'
 export default function Hero() {
   return (
     <section >
-      Skechting -- 
+      Skechting --- skec
+      
     </section>
   )
 }
