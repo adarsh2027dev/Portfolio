@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section >
       Skechting --- skec
-      
+  ..
     </section>
   )
 }
