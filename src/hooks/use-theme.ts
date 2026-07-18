@@ -24,8 +24,10 @@ export function useTheme() {
     const root = document.documentElement;
     const nextTheme = root.classList.contains("light") ? "light" : "dark";
     applyTheme(nextTheme);
-    setTheme(nextTheme);
-    setMounted(true);
+    setTimeout(() => {
+      setTheme(nextTheme);
+      setMounted(true);
+    }, 0);
   }, []);
 
   const toggleTheme = () => {

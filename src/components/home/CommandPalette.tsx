@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-
+import { Search } from "lucide-react";
 import type { CommandAction } from "@/types/home";
 
 type CommandPaletteProps = {
@@ -40,23 +40,18 @@ export function CommandPalette({
   return (
     <div
       aria-hidden={!isOpen}
-      className="fixed inset-0 z-50 flex items-start justify-center bg-slate-950/72 px-4 pt-[12vh] backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-start justify-center bg-[var(--canvas-elevated)]/40 px-4 pt-[15vh] backdrop-blur-md"
       onClick={onClose}
     >
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="command-palette-title"
-        className="w-full max-w-2xl overflow-hidden rounded-[2rem] border border-white/12 bg-[rgba(10,17,30,0.96)] shadow-[0_28px_120px_rgba(2,8,23,0.72)]"
+        className="w-full max-w-2xl rounded-2xl border border-[var(--border-soft)] bg-[var(--canvas)] shadow-[0_16px_64px_rgba(0,0,0,0.25)] overflow-hidden"
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="border-b border-white/10 px-5 py-4">
-          <p
-            id="command-palette-title"
-            className="font-[var(--font-mono)] text-xs uppercase tracking-[0.28em] text-cyan-300"
-          >
-            Command Palette
-          </p>
+        <div className="flex items-center gap-3 border-b border-[var(--border-soft)] px-4 py-3">
+          <Search size={20} className="text-[var(--text-muted)]" />
           <label htmlFor="command-search" className="sr-only">
             Search command palette
           </label>
@@ -66,15 +61,15 @@ export function CommandPalette({
             type="search"
             value={query}
             onChange={(event) => onQueryChange(event.target.value)}
-            placeholder="Search navigation, resume, GitHub..."
-            className="mt-4 w-full bg-transparent text-lg text-white outline-none placeholder:text-slate-500"
+            placeholder="Search commands, projects, or links..."
+            className="flex-1 bg-transparent text-lg text-[var(--text-strong)] outline-none placeholder:text-[var(--text-soft)] placeholder:font-light"
           />
         </div>
 
         <ul role="listbox" aria-label="Command results" className="max-h-[50vh] overflow-y-auto p-2">
           {filteredActions.length === 0 ? (
-            <li className="px-4 py-8 text-sm text-slate-400">
-              No matches. Try “projects”, “resume”, or “contact”.
+            <li className="px-4 py-8 text-center text-sm text-[var(--text-soft)]">
+              No results found for "{query}".
             </li>
           ) : (
             filteredActions.map((action, index) => (
@@ -85,19 +80,21 @@ export function CommandPalette({
                   aria-selected={activeIndex === index}
                   onMouseEnter={() => setActiveIndex(index)}
                   onClick={() => onSelect(action)}
-                  className={`flex w-full items-start justify-between gap-4 rounded-2xl px-4 py-4 text-left transition ${
+                  className={`flex w-full items-center justify-between gap-4 rounded-xl px-4 py-3 text-left transition-colors duration-150 ${
                     activeIndex === index
-                      ? "bg-cyan-300/12 text-white"
-                      : "text-slate-200 hover:bg-white/6"
+                      ? "bg-[var(--surface-muted)] text-[var(--text-strong)]"
+                      : "text-[var(--text-muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--text-strong)]"
                   }`}
                 >
-                  <span className="space-y-1">
-                    <span className="block font-medium">{action.label}</span>
-                    <span className="block text-sm text-slate-400">
-                      {action.description}
-                    </span>
+                  <span className="flex flex-col gap-0.5">
+                    <span className="font-medium">{action.label}</span>
+                    {action.description && (
+                      <span className="text-xs text-[var(--text-soft)]">
+                        {action.description}
+                      </span>
+                    )}
                   </span>
-                  <span className="font-[var(--font-mono)] text-xs uppercase tracking-[0.18em] text-slate-500">
+                  <span className="text-[10px] uppercase tracking-wider text-[var(--text-soft)] bg-[var(--surface-muted)] px-2 py-1 rounded-md border border-[var(--border-soft)]">
                     {action.kind}
                   </span>
                 </button>
@@ -105,6 +102,22 @@ export function CommandPalette({
             ))
           )}
         </ul>
+        
+        <div className="flex items-center gap-4 border-t border-[var(--border-soft)] bg-[var(--surface-muted)] px-4 py-3 text-xs text-[var(--text-soft)]">
+          <div className="flex items-center gap-1.5">
+            <kbd className="kbd !bg-[var(--canvas)] !py-0.5 !px-1.5 !text-[10px]">↑</kbd>
+            <kbd className="kbd !bg-[var(--canvas)] !py-0.5 !px-1.5 !text-[10px]">↓</kbd>
+            <span>to navigate</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <kbd className="kbd !bg-[var(--canvas)] !py-0.5 !px-1.5 !text-[10px]">Enter</kbd>
+            <span>to select</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <kbd className="kbd !bg-[var(--canvas)] !py-0.5 !px-1.5 !text-[10px]">Esc</kbd>
+            <span>to close</span>
+          </div>
+        </div>
       </div>
     </div>
   );

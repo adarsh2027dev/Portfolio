@@ -1,7 +1,6 @@
 import type {
   DesignRole,
   ExperienceItem,
-  GitHubStats,
   HeroHighlight,
   AboutItem,
   Achievement,
@@ -12,7 +11,6 @@ import type {
   ProcessStep,
   SkillCategory,
   Testimonial,
-  LeetCodeStats,
   NavItem,
   Profile,
   Project,
@@ -33,16 +31,16 @@ export const navigation: NavItem[] = [
 ];
 
 export const profile: Profile = {
-// name: "Adarsh Tiwari",
+  name: "Adarsh Tiwari",
 
 intro:
-"Adarsh Tiwari — SDE-1 | Full Stack Engineer | Building Scalable Web Applications.",
+"Adarsh Tiwari — Product Engineer (Full Stack) Intern at Hornvin | Building Scalable Web Applications.",
 
 role:
-"Full Stack Engineer specializing in React, Next.js, Node.js, and cloud-native applications with a strong foundation in Data Structures, Algorithms, and system design.",
+"Product Engineer (Full Stack) Intern at Hornvin, contributing to scalable web applications, modern frontend experiences, backend APIs, authentication systems, and production-ready software solutions.",
 
 summary:
-"Passionate software engineer focused on building high-performance, scalable, and user-centric web applications. Experienced in developing end-to-end products using modern JavaScript frameworks, backend architectures, cloud services, and DevOps practices. Committed to writing clean, maintainable code and delivering business impact through technology.",
+"Passionate software engineer focused on building high-performance, scalable, and user-centric web applications. Currently a Product Engineer (Full Stack) Intern at Hornvin, developing end-to-end products using modern JavaScript frameworks, backend architectures, cloud services, and DevOps practices.",
 
 heroStack: [
 "Data Structures & Algorithms",
@@ -94,6 +92,18 @@ export const heroHighlights: HeroHighlight[] = [
 
 
 export const engineeringExperience: ExperienceItem[] = [
+{
+company: "Hornvin",
+role: "Product Engineer (Full Stack) Intern",
+period: "Jul 2026 - Present",
+location: "Remote",
+outcomes: [
+"Building scalable full-stack applications with modern web technologies.",
+"Developing REST APIs and integrating databases for seamless data operations.",
+"Implementing secure authentication, authorization, and scalable backend services.",
+"Focusing on performance optimization, responsive UI development, and production deployments.",
+],
+},
 {
 company: "Athani Softtech",
 role: "Founding Engineer",
@@ -584,6 +594,7 @@ image: "/certifications/gnb.png",
 title: "Data Visualisation: Empowering Business with Effective Insights",
 issuer: "Tata Group (Forage)",
 date: "15 june 2025",
+href: "#",
 image: "/certifications/tata-forage.png",
 },
 
@@ -591,6 +602,7 @@ image: "/certifications/tata-forage.png",
 title: "Technology Job Simulation",
 issuer: "Deloitte Australia (Forage)",
 date: "2025",
+href: "#",
 image: "/certifications/deloitte-forage.png",
 },
 

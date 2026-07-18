@@ -77,19 +77,18 @@ setFormValues((prev) => ({
 [field]: value,
 }));
 
-```
+
 setErrors((prev) => ({
   ...prev,
   [field]: "",
 }));
-```
 
 };
 
 const validate = () => {
 const nextErrors: Record<string, string> = {};
 
-```
+
 if (!formValues.name.trim()) {
   nextErrors.name = "Please enter your full name.";
 }
@@ -109,7 +108,6 @@ if (!formValues.message.trim()) {
 setErrors(nextErrors);
 
 return Object.keys(nextErrors).length === 0;
-```
 
 };
 
@@ -118,7 +116,7 @@ event: React.FormEvent<HTMLFormElement>
 ) => {
 event.preventDefault();
 
-```
+
 if (!validate()) {
   setStatus("error");
   return;
@@ -172,17 +170,16 @@ try {
       : "Something went wrong. Please try again."
   );
 }
-```
 
 };
 
 return ( <section
    id="contact"
    aria-labelledby="contact-title"
-   className="section-space relative overflow-hidden"
- > <div className="ambient-canvas"> <div className="ambient-blob ambient-blob-a" /> <div className="ambient-blob ambient-blob-b" /> <div className="ambient-blob ambient-blob-c" /> </div>
+   className="section-space relative"
+ > 
 
-```
+
   <div className="grid-shell">
     <div className="mb-16 text-center">
       <span className="hero-pill">
@@ -329,6 +326,8 @@ return ( <section
                   errors.name ? "input-error" : ""
                 }`}
                 placeholder=" "
+                aria-invalid={!!errors.name}
+                aria-required="true"
               />
 
               <label
@@ -351,6 +350,8 @@ return ( <section
                   errors.email ? "input-error" : ""
                 }`}
                 placeholder=" "
+                aria-invalid={!!errors.email}
+                aria-required="true"
               />
 
               <label
@@ -374,6 +375,8 @@ return ( <section
                 errors.subject ? "input-error" : ""
               }`}
               placeholder=" "
+              aria-invalid={!!errors.subject}
+              aria-required="true"
             />
 
             <label
@@ -396,6 +399,8 @@ return ( <section
                 errors.message ? "input-error" : ""
               }`}
               placeholder=" "
+              aria-invalid={!!errors.message}
+              aria-required="true"
             />
 
             <label

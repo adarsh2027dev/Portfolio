@@ -1,9 +1,7 @@
 import type { AppProps } from "next/app";
 import { IBM_Plex_Mono, Manrope } from "next/font/google";
-import Script from "next/script";
-
 import "@/Styles/globals.css";
-import { themeScript } from "@/hooks/use-theme";
+import { Chatbot } from "@/components/ui/Chatbot";
 
 const sans = Manrope({
   subsets: ["latin"],
@@ -21,10 +19,8 @@ const mono = IBM_Plex_Mono({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <div className={`${sans.variable} ${mono.variable}`}>
-      <Script id="theme-init" strategy="beforeInteractive">
-        {themeScript}
-      </Script>
       <Component {...pageProps} />
+      <Chatbot />
     </div>
   );
 }

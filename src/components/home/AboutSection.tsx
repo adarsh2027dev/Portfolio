@@ -12,13 +12,13 @@ aboutItems: AboutItem[];
 const icons = [Code2, Briefcase, Rocket, GraduationCap];
 
 export function AboutSection({ aboutItems }: AboutSectionProps) {
-return ( <section
+return (
+   <section
    id="about"
    aria-labelledby="about-title"
-   className="section-space relative overflow-hidden"
- > <div className="ambient-canvas"> <div className="ambient-blob ambient-blob-a" /> <div className="ambient-blob ambient-blob-b" /> <div className="ambient-blob ambient-blob-c" /> </div>
+   className="section-space relative"
+ > 
 
-```
   <div className="grid-shell relative z-10">
     <motion.div
       initial={{ opacity: 0, y: 24 }}

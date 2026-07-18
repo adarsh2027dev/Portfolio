@@ -1,6 +1,9 @@
-import type { Project } from "@/types/home";
+"use client";
 
-import { SectionHeading } from "./SectionHeading";
+import { motion } from "framer-motion";
+import { ArrowUpRight, Github, Layers3, Sparkles } from "lucide-react";
+
+import type { Project } from "@/types/home";
 
 type ProjectsSectionProps = {
   projects: Project[];
@@ -8,68 +11,145 @@ type ProjectsSectionProps = {
 
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
-    <section id="projects" aria-labelledby="projects-title" className="section-space">
-      <div className="grid-shell space-y-10">
-        <SectionHeading
-          eyebrow="Selected Work"
-          title="Project stories framed around engineering judgment"
-          description="Each card emphasizes why the work mattered, not just which framework was used. That makes the homepage feel more senior and more credible."
-        />
+    <section
+      id="projects"
+      aria-labelledby="projects-title"
+      className="section-space relative"
+    >
+      <div className="grid-shell relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mx-auto max-w-4xl text-center"
+        >
+          <span className="hero-pill shadow-lg shadow-pink-500/10">
+            <Sparkles className="mr-2 inline size-4 text-[var(--accent-tertiary)]" />
+            Featured Projects
+          </span>
 
-        <div className="grid gap-5 lg:grid-cols-3">
-          {projects.map((project) => (
-            <article
-              key={project.name}
-              data-card
-              className="group flex h-full flex-col p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/35"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="text-xl font-semibold text-white">{project.name}</h3>
-                <span className="rounded-full border border-white/12 px-3 py-1 font-[var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-cyan-200">
-                  Live
-                </span>
-              </div>
+          <h2
+            id="projects-title"
+            className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
+          >
+            Building Products With{" "}
+            <span className="hero-heading-accent block mt-2">
+              Real-World Impact
+            </span>
+          </h2>
 
-              <p className="mt-4 text-base leading-7 text-slate-300">
-                {project.summary}
-              </p>
-              <p className="mt-4 text-sm leading-6 text-slate-400">
-                {project.impact}
-              </p>
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-[var(--text-muted)]">
+            A collection of full-stack applications, SaaS platforms, and business products designed to solve meaningful problems and deliver measurable outcomes.
+          </p>
+        </motion.div>
 
-              <ul className="mt-6 flex flex-wrap gap-2" aria-label={`${project.name} stack`}>
-                {project.stack.map((item) => (
-                  <li
-                    key={item}
-                    className="rounded-full bg-white/6 px-3 py-1 text-sm text-slate-200"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
+        <div className="mt-20 grid gap-8 lg:grid-cols-2">
+          {projects.map((project, index) => {
+            // Make the first project span 2 columns on large screens for a bento-like feel
+            const isFeatured = index === 0;
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href={project.href}
-                  target={project.href.startsWith("http") ? "_blank" : undefined}
-                  rel={project.href.startsWith("http") ? "noreferrer" : undefined}
-                  className="inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
-                >
-                  View project
-                </a>
-                {project.repoHref ? (
-                  <a
-                    href={project.repoHref}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center rounded-full border border-white/12 px-4 py-2 text-sm font-semibold text-white transition hover:border-cyan-400/60"
-                  >
-                    View source
-                  </a>
-                ) : null}
-              </div>
-            </article>
-          ))}
+            return (
+              <motion.article
+                key={project.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`spotlight-panel group relative flex flex-col p-8 md:p-10 ${
+                  isFeatured ? "lg:col-span-2" : ""
+                }`}
+              >
+                <div className={`flex flex-col h-full ${isFeatured ? "lg:flex-row lg:gap-12" : "gap-8"}`}>
+                  <div className={`flex-1 flex flex-col`}>
+                    <div className="flex items-center justify-between gap-4 mb-8">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--surface-muted)] to-[var(--surface)] text-[var(--text-strong)] border border-[var(--border-soft)]">
+                        <Layers3 size={20} className="text-[var(--accent-tertiary)]" />
+                      </div>
+                      <span className="kbd bg-[var(--surface-muted)] border-[var(--border-soft)] text-[var(--accent-secondary)]">
+                        {project.status ?? "Featured"}
+                      </span>
+                    </div>
+
+                    <h3 className="text-3xl font-bold tracking-tight text-[var(--text-strong)] group-hover:text-[var(--accent-strong)] transition-colors">
+                      {project.name}
+                    </h3>
+
+                    {project.headline ? (
+                      <p className="mt-3 text-sm font-medium tracking-wide text-[var(--accent-secondary)] uppercase">
+                        {project.headline}
+                      </p>
+                    ) : null}
+
+                    <p className="mt-5 text-lg leading-relaxed text-[var(--text-muted)] group-hover:text-[var(--text-strong)] transition-colors">
+                      {project.summary}
+                    </p>
+
+                    <div className="mt-8 flex flex-wrap gap-2">
+                      {project.stack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="inline-flex items-center rounded-md border border-[var(--border-soft)] bg-[var(--canvas)] px-2.5 py-1 text-xs font-semibold text-[var(--text-soft)]"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-auto pt-10">
+                      <div className="flex flex-wrap items-center gap-4">
+                        <a
+                          href={project.href}
+                          target={project.href.startsWith("http") ? "_blank" : undefined}
+                          rel={project.href.startsWith("http") ? "noreferrer" : undefined}
+                          className="hero-button-primary !py-2.5 !px-5 !text-sm"
+                        >
+                          View Project
+                          <ArrowUpRight size={16} />
+                        </a>
+
+                        {project.repoHref ? (
+                          <a
+                            href={project.repoHref}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="hero-button-secondary !py-2.5 !px-5 !text-sm hover:!border-[var(--text-strong)]"
+                          >
+                            <Github size={16} />
+                            Source
+                          </a>
+                        ) : null}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Impact metrics on the side for featured project */}
+                  {isFeatured && project.metrics?.length ? (
+                    <div className="flex-1 lg:border-l lg:border-[var(--border-soft)] lg:pl-12 flex flex-col justify-center mt-8 lg:mt-0">
+                      <h4 className="text-sm font-semibold tracking-wider text-[var(--text-soft)] uppercase mb-6">
+                        Business Impact
+                      </h4>
+                      <ul className="space-y-6">
+                        {project.metrics.map((metric) => (
+                          <li
+                            key={metric}
+                            className="flex items-start gap-4 text-[var(--text-muted)]"
+                          >
+                            <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[var(--accent-tertiary)] shadow-[0_0_10px_rgba(236,72,153,0.5)]" />
+                            <span className="leading-relaxed font-medium">
+                              {metric}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="mt-8 text-sm italic text-[var(--text-soft)]">
+                        {project.impact}
+                      </p>
+                    </div>
+                  ) : null}
+                </div>
+              </motion.article>
+            );
+          })}
         </div>
       </div>
     </section>
