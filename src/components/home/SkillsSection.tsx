@@ -57,7 +57,7 @@ export function SkillsSection({ categories }: SkillsSectionProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="spotlight-panel group relative flex flex-col justify-between p-8"
+                className="spotlight-panel group relative flex flex-col justify-between p-6 sm:p-8"
               >
                 <div>
                   <div className="flex items-start justify-between gap-4">

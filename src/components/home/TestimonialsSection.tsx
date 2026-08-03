@@ -16,14 +16,13 @@ testimonials: Testimonial[];
 export function TestimonialsSection({
 testimonials,
 }: TestimonialsSectionProps) {
-return ( <section
-   id="testimonials"
-   aria-labelledby="testimonials-title"
-   className="section-space relative"
- > 
-
-```
-  <div className="grid-shell relative z-10">
+return (
+  <section
+    id="testimonials"
+    aria-labelledby="testimonials-title"
+    className="section-space relative"
+  > 
+    <div className="grid-shell relative z-10">
     {/* Header */}
 
     <motion.div
@@ -116,7 +115,7 @@ return ( <section
               duration: 0.5,
               delay: index * 0.1,
             }}
-            className="spotlight-panel p-8"
+            className="spotlight-panel p-6 sm:p-8"
           >
             {/* Top */}
 
@@ -142,7 +141,7 @@ return ( <section
 
             <blockquote className="mt-8">
               <p className="text-lg leading-8 text-[var(--text-muted)]">
-                "{testimonial.quote}"
+                &quot;{testimonial.quote}&quot;
               </p>
             </blockquote>
 

@@ -2,20 +2,16 @@ import Head from "next/head";
 
 import { CommandPalette } from "@/components/home/CommandPalette";
 import { AboutSection } from "@/components/home/AboutSection";
-import { CaseStudiesSection } from "@/components/home/CaseStudiesSection";
-import { CodingProfilesSection } from "@/components/home/CodingProfilesSection";
 import { ContactSection } from "@/components/home/ContactSection";
 import { ExperienceSection } from "@/components/home/ExperienceSection";
 import { GitHubSection } from "@/components/home/GitHubSection";
 import { HeroSection } from "@/components/home/HeroSection";
-import { ProcessSection } from "@/components/home/ProcessSection";
 import { ProjectsSection } from "@/components/home/ProjectsSection";
 import { SkillsSection } from "@/components/home/SkillsSection";
 import { SiteShell } from "@/components/layout/SiteShell";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { AchievementsSection } from "@/components/home/AchievementsSection";
 import { CertificationsSection } from "@/components/home/CertificationsSection";
-import { PrinciplesSection } from "@/components/home/PrinciplesSection";
 import {
   navigation,
   profile,
@@ -26,43 +22,39 @@ import {
   recruiterActions,
   aboutItems,
   skillCategories,
-  processSteps,
   achievements,
   certifications,
   testimonials,
-  codingProfiles,
   githubMetrics,
-  caseStudies,
 } from "@/data/home";
 import { useCommandPalette } from "@/hooks/use-command-palette";
 
 const siteUrl = "https://www.adarshtiwaridev.com";
-const title = "Adarsh Tiwari | Frontend Architect & Product Engineer";
+const title = "Adarsh Tiwari | Software Engineer & Full-Stack Developer";
 const description =
-  "Frontend Architect portfolio for Adarsh Tiwari, focused on design systems, performance, product thinking, and production-grade React and Next.js engineering.";
+  "Portfolio of Adarsh Tiwari, Software Engineer & Product Developer specializing in Next.js, React, Node.js, TypeScript, MongoDB, and modern web application architecture.";
 const ogImage = `${siteUrl}/image/Hero/Hero.png`;
 
 // Build a lightweight JSON-LD person schema for SEO. Use safe fallbacks if data is missing.
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: (profile && profile.name) || "",
+  name: (profile && profile.name) || "Adarsh Tiwari",
   url: siteUrl,
   image: siteUrl + ((profile && profile.portrait && profile.portrait.src) || ""),
-  jobTitle: (profile && profile.role) || "",
+  jobTitle: (profile && profile.role) || "Software Engineer",
   description,
   email: profile && profile.email ? `mailto:${profile.email}` : undefined,
   sameAs: (socialLinks || []).map((link) => link.href).filter(Boolean),
   knowsAbout: [
-    "Frontend Architecture",
+    "Full-Stack Web Development",
     "React",
     "Next.js",
     "TypeScript",
-    "Design Systems",
-    "Web Performance",
-    "Accessibility",
     "Node.js",
-    "AI Automation",
+    "MongoDB",
+    "REST APIs",
+    "System Design",
   ],
   mainEntityOfPage: siteUrl,
 };
@@ -87,24 +79,6 @@ const commandActions = (recruiterActions || []).map((r) => ({
   keywords: [r.label?.toLowerCase?.() || ""],
 }));
 
-const principles = [
-  {
-    title: "Scalable Architecture",
-    description:
-      "Building robust systems with clean code, modular design, and long-term maintainability in mind.",
-  },
-  {
-    title: "Performance Driven",
-    description:
-      "Delivering lightning-fast experiences through optimization, efficient rendering, and modern web technologies.",
-  },
-  {
-    title: "Crafted Experiences",
-    description:
-      "Blending design precision and engineering expertise to create products that users genuinely enjoy using.",
-  },
-];
-
 export default function HomePage() {
   const palette = useCommandPalette(commandActions);
 
@@ -115,7 +89,7 @@ export default function HomePage() {
         <meta name="description" content={description} />
         <meta
           name="keywords"
-          content="Adarsh Tiwari, Frontend Architect, Next.js Engineer, React Engineer, TypeScript Portfolio, Software Engineer"
+          content="Adarsh Tiwari, Software Engineer, Full Stack Developer, Next.js Engineer, React Engineer, TypeScript Portfolio, Web Developer"
         />
         <meta name="author" content={profile.name} />
         <meta name="robots" content="index,follow,max-image-preview:large" />
@@ -141,7 +115,7 @@ export default function HomePage() {
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={ogImage} />
-        <meta name="twitter:creator" content="@adarshtiwaridev" />
+        <meta name="twitter:creator" content="@adarsh_tiwari27" />
 
         <script
           type="application/ld+json"
@@ -164,14 +138,10 @@ export default function HomePage() {
             socialLinks={socialLinks}
           />
           <AboutSection aboutItems={aboutItems} />
-          <SkillsSection categories={skillCategories} />
-          <PrinciplesSection principles={principles} />
           <ProjectsSection projects={projects} />
-          <CaseStudiesSection caseStudies={caseStudies} />
-          <ProcessSection steps={processSteps} />
+          <SkillsSection categories={skillCategories} />
           <ExperienceSection timeline={experienceTimeline} />
           <GitHubSection metrics={githubMetrics} />
-          <CodingProfilesSection profiles={codingProfiles} />
           <AchievementsSection achievements={achievements} />
           <CertificationsSection certifications={certifications} />
           <TestimonialsSection testimonials={testimonials} />

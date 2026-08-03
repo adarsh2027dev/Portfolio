@@ -21,12 +21,12 @@ import type {
 export const navigation: NavItem[] = [
   { href: "#hero", label: "Home" },
   { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
-  { href: "#case-studies", label: "Case studies" },
-  { href: "#process", label: "Process" },
+  { href: "#skills", label: "Skills" },
   { href: "#experience", label: "Experience" },
   { href: "#github", label: "GitHub" },
+  { href: "#achievements", label: "Achievements" },
+  { href: "#testimonials", label: "Testimonials" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -34,13 +34,13 @@ export const profile: Profile = {
   name: "Adarsh Tiwari",
 
 intro:
-"Adarsh Tiwari — Product Engineer (Full Stack) Intern at Hornvin | Building Scalable Web Applications.",
+"Building Scalable Digital Products",
 
 role:
-"Product Engineer (Full Stack) Intern at Hornvin, contributing to scalable web applications, modern frontend experiences, backend APIs, authentication systems, and production-ready software solutions.",
+"Product Engineer (Full Stack)",
 
 summary:
-"Passionate software engineer focused on building high-performance, scalable, and user-centric web applications. Currently a Product Engineer (Full Stack) Intern at Hornvin, developing end-to-end products using modern JavaScript frameworks, backend architectures, cloud services, and DevOps practices.",
+"Software Engineer focused on architecting high-performance, scalable, and user-centric web applications. Currently a Product Engineer Intern @ Hornvin Pvt. Ltd., developing production-ready systems using React, Next.js, Node.js, and cloud-native practices.",
 
 heroStack: [
 "Data Structures & Algorithms",
@@ -65,7 +65,7 @@ location: "India · Remote Ready",
 availability:
 "Open to SDE-1, Full Stack Developer, Product Engineer, and Software Engineering opportunities",
 
-email: "[adarshtiwaridev01@gmail.com](mailto:adarshtiwaridev01@gmail.com)",
+email: "adarshtiwaridev01@gmail.com",
 
 resumeHref: "/Adarsh_Nextjs.pdf",
 
@@ -81,7 +81,7 @@ height: 860,
 export const socialLinks: SocialLink[] = [
   { href: "https://github.com/adarshtiwaridev", label: "GitHub" },
   { href: "https://www.linkedin.com/in/adarshtiwaridev", label: "LinkedIn" },
-  { href: "https://twitter.com/adarshtiwaridev", label: "Twitter" },
+  { href: "https://x.com/adarsh_tiwari27", label: "Twitter / X" },
 ];
 
 export const heroHighlights: HeroHighlight[] = [
@@ -445,7 +445,7 @@ description:
 title: "Current Focus",
 category: "Focus",
 description:
-"Deepening expertise in modern full-stack development, system design, cloud-native architectures, DevOps automation, and AI-powered applications using Next.js, TypeScript, Node.js, AWS, Docker, and CI/CD workflows.",
+"Deepening expertise in modern full-stack development, system design, cloud-native architectures, and DevOps automation. Building resilient products using Next.js, Node.js, MongoDB, AWS, and modern CI/CD workflows.",
 },
 ];
 

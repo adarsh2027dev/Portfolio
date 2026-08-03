@@ -126,8 +126,8 @@ export function Chatbot() {
             <div className="flex items-center justify-between border-b border-[var(--border-soft)] bg-gradient-to-r from-[var(--surface-muted)]/80 to-[var(--surface)]/50 p-4 backdrop-blur-md">
               <div className="flex items-center gap-3">
                 <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[var(--accent-secondary)] to-[var(--accent-strong)] shadow-lg shadow-black/10 dark:shadow-white/10">
-                  <Sparkles size={18} className="text-white dark:text-black absolute -top-1 -right-1" />
-                  <Bot size={20} className="text-white dark:text-black" />
+                  <Sparkles size={18} className="text-white absolute -top-1 -right-1" />
+                  <Bot size={20} className="text-white" />
                 </div>
                 <div>
                   <h3 className="font-bold text-[var(--text-strong)] text-sm tracking-tight">Adarsh AI</h3>
@@ -164,7 +164,7 @@ export function Chatbot() {
                       className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full mt-auto shadow-sm ${
                         msg.role === "user"
                           ? "bg-[var(--surface-muted)] border border-[var(--border-soft)] text-[var(--text-muted)]"
-                          : "bg-gradient-to-br from-[var(--accent-secondary)] to-[var(--accent-strong)] text-white dark:text-black shadow-black/10 dark:shadow-white/10"
+                          : "bg-gradient-to-br from-[var(--accent-secondary)] to-[var(--accent-strong)] text-white shadow-black/10 dark:shadow-white/10"
                       }`}
                     >
                       {msg.role === "user" ? <User size={14} /> : <Bot size={14} />}
@@ -172,7 +172,7 @@ export function Chatbot() {
                     <div
                       className={`max-w-[75%] px-4 py-3 text-sm leading-relaxed shadow-sm ${
                         msg.role === "user"
-                          ? "bg-gradient-to-br from-[var(--accent-secondary)] to-[var(--accent-strong)] text-white dark:text-black rounded-3xl rounded-br-sm"
+                          ? "bg-gradient-to-br from-[var(--accent-secondary)] to-[var(--accent-strong)] text-white rounded-3xl rounded-br-sm"
                           : "bg-[var(--surface-muted)]/80 text-[var(--text-strong)] rounded-3xl rounded-bl-sm border border-[var(--border-soft)] backdrop-blur-sm"
                       }`}
                     >
@@ -189,7 +189,7 @@ export function Chatbot() {
                     exit={{ opacity: 0, scale: 0.9 }}
                     className="flex gap-3 flex-row"
                   >
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full mt-auto shadow-sm bg-gradient-to-br from-[var(--accent-secondary)] to-[var(--accent-strong)] text-white dark:text-black shadow-black/10 dark:shadow-white/10">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full mt-auto shadow-sm bg-gradient-to-br from-[var(--accent-secondary)] to-[var(--accent-strong)] text-white shadow-black/10 dark:shadow-white/10">
                       <Bot size={14} />
                     </div>
                     <div className="bg-[var(--surface-muted)]/80 rounded-3xl rounded-bl-sm border border-[var(--border-soft)] backdrop-blur-sm px-4 py-4 shadow-sm flex items-center gap-1.5 h-[44px]">
@@ -220,7 +220,7 @@ export function Chatbot() {
                 <button
                   type="submit"
                   disabled={!inputValue.trim() || isTyping}
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--accent-secondary)] to-[var(--accent-strong)] text-white dark:text-black transition-all hover:scale-105 hover:shadow-lg disabled:opacity-40 disabled:hover:scale-100 disabled:hover:shadow-none"
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--accent-secondary)] to-[var(--accent-strong)] text-white transition-all hover:scale-105 hover:shadow-lg disabled:opacity-40 disabled:hover:scale-100 disabled:hover:shadow-none"
                   aria-label="Send message"
                 >
                   <Send size={16} className="ml-[2px]" />

@@ -72,7 +72,7 @@ export function ExperienceSection({
                 {/* Timeline Node */}
                 <div className="hidden md:flex absolute left-8 top-8 h-4 w-4 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--canvas)] border-2 border-[var(--accent-strong)] shadow-[0_0_15px_rgba(0,112,243,0.5)] z-10" />
 
-                <div className="spotlight-panel group p-8 md:p-10 transition-all hover:bg-white/5">
+                <div className="spotlight-panel group p-6 sm:p-8 md:p-10 transition-all hover:bg-white/5">
                   <div className="grid gap-8 lg:grid-cols-[0.4fr_0.6fr]">
                     <div>
                       <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--surface-muted)] to-[var(--surface)] text-[var(--text-strong)] border border-[var(--border-soft)] shadow-inner">

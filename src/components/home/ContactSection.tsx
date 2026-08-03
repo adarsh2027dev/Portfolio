@@ -150,7 +150,7 @@ try {
   setStatus("success");
 
   setServerMessage(
-    "Thanks for reaching out. I'll get back to you as soon as possible."
+    "Thanks for reaching out. I&apos;ll get back to you as soon as possible."
   );
 
   setFormValues({
@@ -183,14 +183,14 @@ return ( <section
   <div className="grid-shell">
     <div className="mb-16 text-center">
       <span className="hero-pill">
-        Let's Connect
+        Let&apos;s Connect
       </span>
 
       <h2
         id="contact-title"
         className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl"
       >
-        Let's Build Your Next{" "}
+        Let&apos;s Build Your Next{" "}
         <span className="hero-heading-accent">
           Product
         </span>
@@ -225,9 +225,9 @@ return ( <section
         </h3>
 
         <p className="mt-4 leading-8 text-[var(--text-muted)]">
-          Whether you're hiring, building a startup,
+          Whether you&apos;re hiring, building a startup,
           looking for a developer, or simply want to
-          discuss an idea, I'd love to hear from you.
+          discuss an idea, I&apos;d love to hear from you.
         </p>
 
         <div className="mt-10 grid gap-4">
@@ -304,7 +304,7 @@ return ( <section
 
           <p className="mt-3 text-[var(--text-muted)]">
             Have a project, opportunity, or idea?
-            Let's discuss how we can bring it to life.
+            Let&apos;s discuss how we can bring it to life.
           </p>
         </div>
 
@@ -312,116 +312,107 @@ return ( <section
           onSubmit={handleSubmit}
           noValidate
           className="mt-8 space-y-6"
+          aria-live="polite"
         >
-          <div className="grid gap-4 md:grid-cols-2">
-            <div className="form-field">
+          <div className="grid gap-6 md:grid-cols-2">
+            <div>
+              <label htmlFor="name" className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-soft)] mb-2">
+                Full Name <span className="text-red-400">*</span>
+              </label>
               <input
                 id="name"
                 type="text"
                 value={formValues.name}
-                onChange={(e) =>
-                  handleChange("name", e.target.value)
-                }
-                className={`form-input ${
-                  errors.name ? "input-error" : ""
+                onChange={(e) => handleChange("name", e.target.value)}
+                className={`w-full rounded-xl border bg-[var(--surface-muted)] px-4 py-3 text-sm text-[var(--text-strong)] transition-all focus:outline-none focus:ring-2 focus:ring-[var(--accent-strong)]/50 ${
+                  errors.name ? "border-red-500/80 ring-1 ring-red-500/30" : "border-[var(--border-soft)] hover:border-[var(--border-strong)]"
                 }`}
-                placeholder=" "
+                placeholder="John Doe"
                 aria-invalid={!!errors.name}
                 aria-required="true"
+                disabled={status === "loading"}
               />
-
-              <label
-                htmlFor="name"
-                className="floating-label"
-              >
-                Full Name
-              </label>
+              {errors.name && <p className="mt-1.5 text-xs text-red-400 font-medium">{errors.name}</p>}
             </div>
 
-            <div className="form-field">
+            <div>
+              <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-soft)] mb-2">
+                Email Address <span className="text-red-400">*</span>
+              </label>
               <input
                 id="email"
                 type="email"
                 value={formValues.email}
-                onChange={(e) =>
-                  handleChange("email", e.target.value)
-                }
-                className={`form-input ${
-                  errors.email ? "input-error" : ""
+                onChange={(e) => handleChange("email", e.target.value)}
+                className={`w-full rounded-xl border bg-[var(--surface-muted)] px-4 py-3 text-sm text-[var(--text-strong)] transition-all focus:outline-none focus:ring-2 focus:ring-[var(--accent-strong)]/50 ${
+                  errors.email ? "border-red-500/80 ring-1 ring-red-500/30" : "border-[var(--border-soft)] hover:border-[var(--border-strong)]"
                 }`}
-                placeholder=" "
+                placeholder="john@example.com"
                 aria-invalid={!!errors.email}
                 aria-required="true"
+                disabled={status === "loading"}
               />
-
-              <label
-                htmlFor="email"
-                className="floating-label"
-              >
-                Email Address
-              </label>
+              {errors.email && <p className="mt-1.5 text-xs text-red-400 font-medium">{errors.email}</p>}
             </div>
           </div>
 
-          <div className="form-field">
+          <div>
+            <label htmlFor="subject" className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-soft)] mb-2">
+              Subject <span className="text-red-400">*</span>
+            </label>
             <input
               id="subject"
               type="text"
               value={formValues.subject}
-              onChange={(e) =>
-                handleChange("subject", e.target.value)
-              }
-              className={`form-input ${
-                errors.subject ? "input-error" : ""
+              onChange={(e) => handleChange("subject", e.target.value)}
+              className={`w-full rounded-xl border bg-[var(--surface-muted)] px-4 py-3 text-sm text-[var(--text-strong)] transition-all focus:outline-none focus:ring-2 focus:ring-[var(--accent-strong)]/50 ${
+                errors.subject ? "border-red-500/80 ring-1 ring-red-500/30" : "border-[var(--border-soft)] hover:border-[var(--border-strong)]"
               }`}
-              placeholder=" "
+              placeholder="Full-Stack Engineer Role / Project Inquiry"
               aria-invalid={!!errors.subject}
               aria-required="true"
+              disabled={status === "loading"}
             />
-
-            <label
-              htmlFor="subject"
-              className="floating-label"
-            >
-              Project Subject
-            </label>
+            {errors.subject && <p className="mt-1.5 text-xs text-red-400 font-medium">{errors.subject}</p>}
           </div>
 
-          <div className="form-field">
+          <div>
+            <label htmlFor="message" className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-soft)] mb-2">
+              Message <span className="text-red-400">*</span>
+            </label>
             <textarea
               id="message"
-              rows={6}
+              rows={5}
               value={formValues.message}
-              onChange={(e) =>
-                handleChange("message", e.target.value)
-              }
-              className={`form-input resize-none ${
-                errors.message ? "input-error" : ""
+              onChange={(e) => handleChange("message", e.target.value)}
+              className={`w-full rounded-xl border bg-[var(--surface-muted)] px-4 py-3 text-sm text-[var(--text-strong)] resize-none transition-all focus:outline-none focus:ring-2 focus:ring-[var(--accent-strong)]/50 ${
+                errors.message ? "border-red-500/80 ring-1 ring-red-500/30" : "border-[var(--border-soft)] hover:border-[var(--border-strong)]"
               }`}
-              placeholder=" "
+              placeholder="Hello Adarsh, I would like to discuss..."
               aria-invalid={!!errors.message}
               aria-required="true"
+              disabled={status === "loading"}
             />
-
-            <label
-              htmlFor="message"
-              className="floating-label"
-            >
-              Tell me about your project...
-            </label>
+            {errors.message && <p className="mt-1.5 text-xs text-red-400 font-medium">{errors.message}</p>}
           </div>
 
           <button
             type="submit"
             disabled={status === "loading"}
-            className="hero-button-primary w-full justify-center py-4"
+            className="hero-button-primary w-full justify-center py-3.5 text-sm font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {status === "loading" ? (
-              "Sending..."
+              <span className="flex items-center gap-2">
+                <svg className="animate-spin h-4 w-4 text-white" viewBox="0 0 24 24" fill="none">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                </svg>
+                Sending Message...
+              </span>
             ) : (
               <>
                 Send Message
-                <Send size={18} />
+                <Send size={16} />
               </>
             )}
           </button>
@@ -432,11 +423,11 @@ return ( <section
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                className="rounded-3xl border border-emerald-500/20 bg-emerald-500/10 p-4 text-sm text-emerald-400"
+                className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-sm text-emerald-300 backdrop-blur-md"
               >
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={18} />
-                  {serverMessage}
+                <div className="flex items-center gap-2.5 font-medium">
+                  <CheckCircle2 size={20} className="text-emerald-400 shrink-0" />
+                  {serverMessage || "Thank you! Your message has been sent successfully."}
                 </div>
               </motion.div>
             )}
@@ -448,7 +439,7 @@ return ( <section
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                className="rounded-3xl border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-400"
+                className="rounded-2xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-300 backdrop-blur-md"
               >
                 {serverMessage}
               </motion.div>

@@ -42,7 +42,7 @@ export function AchievementsSection({ achievements }: AchievementsSectionProps) 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.45, delay: index * 0.1 }}
-              className="spotlight-panel group p-8"
+              className="spotlight-panel group p-6 sm:p-8"
             >
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--text-soft)] group-hover:text-[var(--accent-secondary)] transition-colors">
                 {achievement.label}

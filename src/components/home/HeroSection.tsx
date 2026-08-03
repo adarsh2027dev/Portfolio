@@ -107,7 +107,7 @@ export function HeroSection({
               href="#projects"
               className="hero-button-primary"
             >
-              View selected work
+              View Projects
               <ArrowUpRight className="size-4" aria-hidden="true" />
             </motion.a>
             <motion.a
@@ -118,8 +118,16 @@ export function HeroSection({
               rel="noreferrer"
               className="hero-button-secondary backdrop-blur-md"
             >
-              Open resume
+              Download Resume
               <Download className="size-4" aria-hidden="true" />
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              href="#contact"
+              className="hero-button-secondary backdrop-blur-md"
+            >
+              Contact Me
             </motion.a>
             <motion.button
               whileHover={{ scale: 1.03 }}
@@ -127,10 +135,9 @@ export function HeroSection({
               type="button"
               onClick={onOpenCommandPalette}
               aria-label="Open command palette"
-              className="hero-button-secondary backdrop-blur-md"
+              className="hero-button-secondary backdrop-blur-md hidden sm:inline-flex"
             >
               <Command className="size-4" aria-hidden="true" />
-              Explore commands
               <span className="kbd ml-1">{commandShortcut}</span>
             </motion.button>
           </motion.div>

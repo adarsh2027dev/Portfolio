@@ -42,7 +42,7 @@ return (
       </h2>
 
       <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-[var(--text-muted)]">
-        I'm a Full-Stack Developer focused on creating scalable web
+        I&apos;m a Full-Stack Developer focused on creating scalable web
         applications, modern user experiences, and business-driven
         solutions. My work combines engineering excellence, product
         thinking, and a commitment to building software that delivers
@@ -64,7 +64,7 @@ return (
               duration: 0.5,
               delay: index * 0.1,
             }}
-            className="spotlight-panel group p-8"
+            className="spotlight-panel group p-6 sm:p-8"
           >
             <div className="flex items-start justify-between gap-4">
               <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-gradient-to-br from-[var(--accent-tertiary)] to-[var(--accent-strong)] text-white shadow-lg">

@@ -113,13 +113,13 @@ select {
   color: #f8fbff;
 }
 
-:where(body, a, button, input, textarea, select, header, footer, [data-card], .spotlight-panel, .hero-pill, .hero-button-primary, .hero-button-secondary, .hero-social-chip, .kbd) {
+:where(body, a, button, input, textarea, select, [data-card], .spotlight-panel, .hero-pill, .hero-button-primary, .hero-button-secondary, .hero-social-chip) {
   transition:
-    color 500ms ease-in-out,
-    background-color 500ms ease-in-out,
-    border-color 500ms ease-in-out,
-    box-shadow 500ms ease-in-out,
-    opacity 500ms ease-in-out;
+    color 200ms ease-out,
+    background-color 200ms ease-out,
+    border-color 200ms ease-out,
+    box-shadow 200ms ease-out,
+    opacity 200ms ease-out;
 }
 
 :focus-visible {

@@ -55,7 +55,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`spotlight-panel group relative flex flex-col p-8 md:p-10 ${
+                className={`spotlight-panel group relative flex flex-col p-6 sm:p-8 md:p-10 ${
                   isFeatured ? "lg:col-span-2" : ""
                 }`}
               >
@@ -95,7 +95,24 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                       ))}
                     </div>
 
-                    <div className="mt-auto pt-10">
+                    {/* Impact metrics for non-featured projects */}
+                    {!isFeatured && project.metrics?.length ? (
+                      <div className="mt-6 border-t border-[var(--border-soft)] pt-5">
+                        <p className="text-xs font-semibold tracking-wider text-[var(--text-soft)] uppercase mb-3">
+                          Key Impact & Metrics
+                        </p>
+                        <ul className="space-y-2">
+                          {project.metrics.map((metric) => (
+                            <li key={metric} className="flex items-start gap-2.5 text-xs text-[var(--text-muted)] font-medium">
+                              <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent-secondary)]" />
+                              <span>{metric}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
+
+                    <div className="mt-auto pt-8">
                       <div className="flex flex-wrap items-center gap-4">
                         <a
                           href={project.href}
@@ -103,7 +120,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                           rel={project.href.startsWith("http") ? "noreferrer" : undefined}
                           className="hero-button-primary !py-2.5 !px-5 !text-sm"
                         >
-                          View Project
+                          View Live Demo
                           <ArrowUpRight size={16} />
                         </a>
 
@@ -115,7 +132,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                             className="hero-button-secondary !py-2.5 !px-5 !text-sm hover:!border-[var(--text-strong)]"
                           >
                             <Github size={16} />
-                            Source
+                            GitHub Code
                           </a>
                         ) : null}
                       </div>
@@ -126,7 +143,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                   {isFeatured && project.metrics?.length ? (
                     <div className="flex-1 lg:border-l lg:border-[var(--border-soft)] lg:pl-12 flex flex-col justify-center mt-8 lg:mt-0">
                       <h4 className="text-sm font-semibold tracking-wider text-[var(--text-soft)] uppercase mb-6">
-                        Business Impact
+                        Business Impact & Engineering Highlights
                       </h4>
                       <ul className="space-y-6">
                         {project.metrics.map((metric) => (
@@ -141,9 +158,11 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                           </li>
                         ))}
                       </ul>
-                      <p className="mt-8 text-sm italic text-[var(--text-soft)]">
-                        {project.impact}
-                      </p>
+                      {project.impact ? (
+                        <p className="mt-8 text-sm italic text-[var(--text-soft)]">
+                          {project.impact}
+                        </p>
+                      ) : null}
                     </div>
                   ) : null}
                 </div>

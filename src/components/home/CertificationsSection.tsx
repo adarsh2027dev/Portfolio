@@ -17,14 +17,13 @@ certifications: Certification[];
 export function CertificationsSection({
 certifications,
 }: CertificationsSectionProps) {
-return ( <section
-   id="certifications"
-   aria-labelledby="certifications-title"
-   className="section-space relative"
- > 
-
-```
-  <div className="grid-shell relative z-10">
+return (
+  <section
+    id="certifications"
+    aria-labelledby="certifications-title"
+    className="section-space relative"
+  > 
+    <div className="grid-shell relative z-10">
     {/* Header */}
 
     <motion.div
@@ -81,7 +80,7 @@ return ( <section
         <div
           key={item.label}
           data-card
-          className="p-6 text-center"
+          className="p-5 sm:p-6 text-center"
         >
           <h3 className="text-3xl font-bold text-[var(--text-strong)]">
             {item.value}
@@ -96,7 +95,7 @@ return ( <section
 
     {/* Certification Grid */}
 
-    <div className="mt-14 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+    <div className="mt-14 grid gap-6 sm:grid-cols-2 xl:grid-cols-3 items-stretch">
       {certifications.map((cert, index) => (
         <motion.a
           key={cert.title}
@@ -119,21 +118,22 @@ return ( <section
             duration: 0.5,
             delay: index * 0.08,
           }}
-          className="spotlight-panel group flex flex-col p-0"
+          className="spotlight-panel group flex flex-col h-full overflow-hidden rounded-[1.5rem] p-0 border border-[var(--border-soft)] transition-all duration-300 hover:border-[var(--accent-strong)]/40 hover:shadow-xl hover:-translate-y-1"
         >
-          {/* Certificate Image */}
+          {/* Certificate Image Frame */}
 
-          <div className="relative aspect-[4/3]">
+          <div className="relative aspect-[16/10] w-full overflow-hidden bg-[var(--surface-muted)] p-5 flex items-center justify-center border-b border-[var(--border-soft)]">
             <img
               src={cert.image}
               alt={cert.title}
-              className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+              className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-sm"
+              loading="lazy"
             />
 
-            <div className="absolute right-4 top-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-black/20 backdrop-blur-xl">
+            <div className="absolute right-3 top-3">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-black/40 backdrop-blur-md text-white/90 ring-1 ring-white/20 transition-transform group-hover:scale-110">
                 <ExternalLink
-                  size={18}
+                  size={15}
                   className="text-white"
                 />
               </div>
@@ -142,41 +142,43 @@ return ( <section
 
           {/* Content */}
 
-          <div className="p-6">
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex items-center gap-2">
-                <BadgeCheck
-                  size={18}
-                  className="text-[var(--accent-secondary)]"
-                />
+          <div className="flex flex-col flex-1 justify-between p-6">
+            <div>
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-1.5">
+                  <BadgeCheck
+                    size={16}
+                    className="text-[var(--accent-secondary)]"
+                  />
 
-                <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--text-soft)]">
-                  Verified
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--text-soft)]">
+                    Verified Credential
+                  </span>
+                </div>
+
+                <span className="kbd !text-[11px] !px-2 !py-0.5">
+                  {cert.date}
                 </span>
               </div>
 
-              <span className="kbd">
-                {cert.date}
-              </span>
+              <h3 className="mt-4 text-lg font-bold leading-snug text-[var(--text-strong)] group-hover:text-[var(--accent-strong)] transition-colors">
+                {cert.title}
+              </h3>
+
+              <p className="mt-2 text-sm font-medium text-[var(--text-muted)]">
+                {cert.issuer}
+              </p>
             </div>
-
-            <h3 className="mt-5 text-xl font-semibold text-[var(--text-strong)]">
-              {cert.title}
-            </h3>
-
-            <p className="mt-3 text-[var(--text-muted)]">
-              {cert.issuer}
-            </p>
 
             <div className="mt-6 border-t border-[var(--border-soft)] pt-4">
               <div className="flex items-center gap-2">
                 <Award
-                  size={16}
+                  size={15}
                   className="text-[var(--accent-secondary)]"
                 />
 
-                <span className="text-sm text-[var(--text-soft)]">
-                  Industry Recognized Credential
+                <span className="text-xs text-[var(--text-soft)]">
+                  Verified Technical Achievement
                 </span>
               </div>
             </div>
@@ -196,7 +198,7 @@ return ( <section
     >
       <div
         data-card
-        className="p-8 text-center"
+        className="p-6 sm:p-8 text-center"
       >
         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-3xl bg-gradient-to-br from-[var(--accent-tertiary)] to-[var(--accent-strong)] text-white shadow-lg">
           <GraduationCap size={28} />

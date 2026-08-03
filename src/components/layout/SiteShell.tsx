@@ -72,16 +72,26 @@ export function SiteShell({
         }}
         animate={hidden ? "hidden" : "visible"}
         transition={{ duration: 0.35, ease: "easeInOut" }}
-        className="floating-nav inset-x-0 mx-auto flex items-center justify-between gap-4 px-4 py-3 sm:px-6 w-[92%] sm:w-[85%] max-w-4xl"
+        className="floating-nav inset-x-0 mx-auto flex items-center justify-between gap-3 px-4 py-2.5 sm:px-6 w-[94%] sm:w-[90%] max-w-6xl shadow-lg backdrop-blur-xl"
       >
         <a
-          href="#main-content"
-          className="font-[var(--font-mono)] text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[color:var(--text-strong)] shrink-0 transition-transform hover:scale-105"
+          href="#top"
+          aria-label="Adarsh Tiwari Home"
+          className="relative group flex items-center gap-2.5 shrink-0 transition-transform hover:scale-105"
         >
-          AT / Portfolio
+          <div className="relative h-9 w-9 sm:h-10 sm:w-10 overflow-hidden rounded-full ring-2 ring-[var(--border-strong)]/60 shadow-md group-hover:ring-[var(--accent-secondary)] transition-all">
+            <img
+              src="/image/logo/profile.jpg"
+              alt="Adarsh Tiwari"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <span className="hidden xl:inline font-[var(--font-mono)] text-xs font-bold uppercase tracking-wider text-[var(--text-strong)]">
+            Adarsh Tiwari
+          </span>
         </a>
 
-        <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-4 lg:gap-5 md:flex">
           {navigation.map((item) => {
             const isActive = activeSection === item.href.replace("#", "");
             return (
@@ -109,6 +119,15 @@ export function SiteShell({
         </nav>
 
         <div className="flex items-center gap-2 shrink-0">
+          <a
+            href="/Adarsh_Nextjs.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-md hover:scale-[1.02] transition-all"
+          >
+            Resume
+          </a>
+
           <motion.button
             type="button"
             whileHover={{ scale: 1.05 }}
@@ -133,7 +152,7 @@ export function SiteShell({
             aria-label="Open command palette"
             className="hidden sm:flex h-8 items-center gap-1.5 rounded-xl border border-[var(--border-soft)] bg-[var(--surface-muted)] px-2.5 text-xs text-[var(--text-strong)] transition-colors hover:bg-[var(--surface)] hover:border-[var(--border-strong)]"
           >
-            <span className="font-medium">Cmd</span>
+            <span className="font-medium">⌘</span>
             <span className="kbd bg-transparent !py-0.5 !px-1.5 !text-[10px]">K</span>
           </button>
 
@@ -142,6 +161,8 @@ export function SiteShell({
             type="button"
             className="md:hidden flex h-8 w-8 items-center justify-center rounded-xl border border-[var(--border-soft)] bg-[var(--surface-muted)] text-[var(--text-strong)] transition-colors hover:bg-[var(--surface)]"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-expanded={mobileMenuOpen}
+            aria-label="Toggle mobile menu"
           >
             {mobileMenuOpen ? <X size={16} /> : <Menu size={16} />}
           </button>
